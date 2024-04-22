@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=64 % Please change the parameter suited to the cluster used. 
+#SBATCH --mem=0 % Please change the parameter suited to the cluster used. 
+#SBATCH --partition=epyc-64 % Please change to the partition used. 
+#SBATCH --time=24:00:00 % Please change the time limit suited to the cluster used. 
+#SBATCH --account=  % Please enter your account ID here if needed. 
+
+module load gcc
+module load openblas
+module load r
+export OMP_NUM_THREADS=1
+Rscript --vanilla HP_AR_MC_FDAC_vs_MSW.R
